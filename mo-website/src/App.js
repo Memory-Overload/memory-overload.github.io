@@ -1,5 +1,5 @@
 import './App.css';
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Homepage from "./Components/Homepage/Homepage";
 import ABoilingIslesYule from "./Components/ABoilingIslesYule/ABoilingIslesYule";
 import TheGoodBasiliskLuzura from "./Components/TheGoodBasiliskLuzura/TheGoodBasiliskLuzura";
@@ -25,31 +25,29 @@ import Uncle from "./Components/Uncle/Uncle";
 function App() {
   return (
     <div className="App">
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Homepage />} />
-          <Route path="/ABoilingIslesYule" element={<ABoilingIslesYule />} />
-          <Route path="/TheGoodBasiliskLuzura" element={<TheGoodBasiliskLuzura />} />
-          <Route path="/TheLifeoftheCostumeParty" element={<TheLifeoftheCostumeParty />} />
-          <Route path="/InvestigatorAmityandtheCaseoftheMissingMuffin" element={<InvestigatorAmityandtheCaseoftheMissingMuffin />} />
-          <Route path="/TheNocedaClawthorneWhispersBunch" element={<TheNocedaClawthorneWhispersBunch />} />
-          <Route path="/Penstagram20butonAO3" element={<Penstagram20butonAO3 />} />
-          <Route path="/ASmileBrighterThanTheSun" element={<ASmileBrighterThanTheSun />} />
-          <Route path="/TheSecondReVeeal" element={<TheSecondReVeeal />} />
-          <Route path="/WhoCanItBeNow" element={<WhoCanItBeNow />} />
-          <Route path="/TheMostNormalMilkshakeDateEver" element={<TheMostNormalMilkshakeDateEver />} />
-          <Route path="/TheIslesAccordingtoLuz" element={<TheIslesAccordingtoLuz />} />
-          <Route path="/AnUncommonCaseoftheCommonMold" element={<AnUncommonCaseoftheCommonMold />} />
-          <Route path="/SoThatsWhatThoseColorsMean" element={<SoThatsWhatThoseColorsMean />} />
-          <Route path="/MyTreasure" element={<MyTreasure />} />
-          <Route path="/VeeandMashaGoOnaTourButReallyItsaDate" element={<VeeandMashaGoOnaTourButReallyItsaDate />} />
-          <Route path="/ThroughGlassEyes" element={<ThroughGlassEyes />} />
-          <Route path="/TheHexsquadDiscoversTheInternet" element={<TheHexsquadDiscoversTheInternet />} />
-          <Route path="/TheRealMeTheRealVee" element={<TheRealMeTheRealVee />} />
-          <Route path="/Attempt37" element={<Attempt37 />} />
-          <Route path="/Uncle" element={<Uncle />} />
-        </Routes>
-      </BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Homepage />} />
+        <Route path="/ABoilingIslesYule" element={<ABoilingIslesYule />} />
+        <Route path="/TheGoodBasiliskLuzura" element={<TheGoodBasiliskLuzura />} />
+        <Route path="/TheLifeoftheCostumeParty" element={<TheLifeoftheCostumeParty />} />
+        <Route path="/InvestigatorAmityandtheCaseoftheMissingMuffin" element={<InvestigatorAmityandtheCaseoftheMissingMuffin />} />
+        <Route path="/TheNocedaClawthorneWhispersBunch" element={<TheNocedaClawthorneWhispersBunch />} />
+        <Route path="/Penstagram20butonAO3" element={<Penstagram20butonAO3 />} />
+        <Route path="/ASmileBrighterThanTheSun" element={<ASmileBrighterThanTheSun />} />
+        <Route path="/TheSecondReVeeal" element={<TheSecondReVeeal />} />
+        <Route path="/WhoCanItBeNow" element={<WhoCanItBeNow />} />
+        <Route path="/TheMostNormalMilkshakeDateEver" element={<TheMostNormalMilkshakeDateEver />} />
+        <Route path="/TheIslesAccordingtoLuz" element={<TheIslesAccordingtoLuz />} />
+        <Route path="/AnUncommonCaseoftheCommonMold" element={<AnUncommonCaseoftheCommonMold />} />
+        <Route path="/SoThatsWhatThoseColorsMean" element={<SoThatsWhatThoseColorsMean />} />
+        <Route path="/MyTreasure" element={<MyTreasure />} />
+        <Route path="/VeeandMashaGoOnaTourButReallyItsaDate" element={<VeeandMashaGoOnaTourButReallyItsaDate />} />
+        <Route path="/ThroughGlassEyes" element={<ThroughGlassEyes />} />
+        <Route path="/TheHexsquadDiscoversTheInternet" element={<TheHexsquadDiscoversTheInternet />} />
+        <Route path="/TheRealMeTheRealVee" element={<TheRealMeTheRealVee />} />
+        <Route path="/Attempt37" element={<Attempt37 />} />
+        <Route path="/Uncle" element={<Uncle />} />
+      </Routes>
     </div>
   );
 }
