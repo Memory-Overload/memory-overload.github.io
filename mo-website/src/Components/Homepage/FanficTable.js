@@ -7,6 +7,7 @@ async function get_data(url) {
 }
 
 function urlifyTitle(title) {
+  // removes all non alphanumeric characters
   return title.replaceAll(/\W/g, "");
 }
 
