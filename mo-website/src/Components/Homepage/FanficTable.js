@@ -16,7 +16,6 @@ const ao3_url = "https://archiveofourown.org/works/";
 
 const FanficTable = () => {
   const fic_list = Object.entries(fic_data)
-  console.log(fic_list)
   const slash = "/"
   return (
     <div>
