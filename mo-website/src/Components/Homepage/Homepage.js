@@ -1,5 +1,6 @@
 import FanficTable from "./FanficTable";
 import './Homepage.css';
+
 function Homepage() {
   return (
     <div>

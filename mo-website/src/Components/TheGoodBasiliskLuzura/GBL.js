@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import "./gbl.css";
 
+window.sessionStorage.setItem("firstChapterPath", "gbl_chunked/1-prologue.html");
+const firstChapterPath = window.sessionStorage.getItem("firstChapterPath");
+
 const get_json = async () =>
   await fetch("gbl_chunked/sitemap.json").then(resp => resp.json());
 
 let raw_json = get_json();
-console.log("Raw JSON", raw_json);
-
 let chapters = raw_json.then(resp => Object.entries(resp)[1][1]);
-console.log("Chapters", chapters)
 
 let chapter_list = [];
 const get_chaps = async () => await chapters.then(
@@ -19,8 +19,7 @@ const get_chaps = async () => await chapters.then(
   }
 )
 await get_chaps()
-console.log(chapter_list)
-let currentChapter = -1;
+let currentChapter = 0;
 
 async function get_chapter_html(chapter_list) {
   console.log("Chapter", currentChapter, chapter_list[currentChapter]);
@@ -30,7 +29,7 @@ async function get_chapter_html(chapter_list) {
     .then(html => new DOMParser().parseFromString(html, "text/html"));
 }
 
-function GBL() {
+function Reader() {
   const [isNotFirstChapter, setPreviousButtonVis] = useState(false);
   const [isNotLastChapter, setNextButtonVis] = useState(true);
 
@@ -54,7 +53,8 @@ function GBL() {
 
   return (
     <div>
-      <div id="reader" onTimeUpdate={next_chapter}>
+      <div id="reader">
+        <iframe title="reader-iframe" innerHTML={<p></p>} src={firstChapterPath}></iframe>
       </div>
       {(isNotLastChapter) && <button onClick={next_chapter}>Next Chapter</button>}
       {(isNotFirstChapter) && <button onClick={previous_chapter}>Previous Chapter</button>}
@@ -62,4 +62,4 @@ function GBL() {
   )
 }
 
-export default GBL;
+export default Reader;
