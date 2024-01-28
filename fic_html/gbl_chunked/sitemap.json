@@ -1,11 +1,4 @@
 {
-  "section": {
-    "id": "",
-    "level": "0",
-    "number": null,
-    "path": "index.html",
-    "title": "Good Basilisk Luzura by MemoryOverload"
-  },
   "subsections": [
     {
       "section": {
@@ -14,8 +7,7 @@
         "number": "1",
         "path": "01-prologue.html",
         "title": "Prologue"
-      },
-      "subsections": []
+      }
     },
     {
       "section": {
@@ -24,8 +16,7 @@
         "number": "2",
         "path": "02-luz-gets-a-reality-check.html",
         "title": "Luz Gets A Reality Check"
-      },
-      "subsections": []
+      }
     },
     {
       "section": {
@@ -34,8 +25,7 @@
         "number": "3",
         "path": "03-luz-races-an-owl.html",
         "title": "Luz Races An Owl"
-      },
-      "subsections": []
+      }
     },
     {
       "section": {
@@ -44,8 +34,7 @@
         "number": "4",
         "path": "04-luz-fraternizes-with-a-criminal.html",
         "title": "Luz Fraternizes With A Criminal"
-      },
-      "subsections": []
+      }
     },
     {
       "section": {
@@ -54,8 +43,7 @@
         "number": "5",
         "path": "05-luz-goes-through-her-mid-teens-crisis.html",
         "title": "Luz Goes Through Her Mid-Teens Crisis"
-      },
-      "subsections": []
+      }
     },
     {
       "section": {
@@ -64,8 +52,7 @@
         "number": "6",
         "path": "06-luz-reads-a-book.html",
         "title": "Luz Reads A Book"
-      },
-      "subsections": []
+      }
     },
     {
       "section": {
@@ -74,8 +61,7 @@
         "number": "7",
         "path": "07-luz-cries-on-the-living-room-floor.html",
         "title": "Luz Cries On The Living Room Floor"
-      },
-      "subsections": []
+      }
     },
     {
       "section": {
@@ -84,8 +70,7 @@
         "number": "8",
         "path": "08-luz-makes-a-deal.html",
         "title": "Luz Makes A Deal"
-      },
-      "subsections": []
+      }
     },
     {
       "section": {
@@ -94,8 +79,7 @@
         "number": "9",
         "path": "09-luz-impersonates-a-homework-assignment.html",
         "title": "Luz Impersonates A Homework Assignment"
-      },
-      "subsections": []
+      }
     },
     {
       "section": {
@@ -104,8 +88,7 @@
         "number": "10",
         "path": "10-luz-tries-to-eat-a-schools-defense-system.html",
         "title": "Luz Tries To Eat A School’s Defense System"
-      },
-      "subsections": []
+      }
     },
     {
       "section": {
@@ -114,8 +97,7 @@
         "number": "11",
         "path": "11-luz-applies-her-first-aid-training.html",
         "title": "Luz Applies Her First Aid Training"
-      },
-      "subsections": []
+      }
     },
     {
       "section": {
@@ -124,8 +106,7 @@
         "number": "12",
         "path": "12-luz-accidentally-kos-a-crusty-old-woman.html",
         "title": "Luz Accidentally KO’s A Crusty Old Woman"
-      },
-      "subsections": []
+      }
     },
     {
       "section": {
@@ -134,8 +115,7 @@
         "number": "13",
         "path": "13-luz-reads-a-different-book.html",
         "title": "Luz Reads A Different Book"
-      },
-      "subsections": []
+      }
     },
     {
       "section": {
@@ -144,8 +124,7 @@
         "number": "14",
         "path": "14-luz-learns-about-the-magic-of-camaraderie.html",
         "title": "Luz Learns About The Magic Of Camaraderie"
-      },
-      "subsections": []
+      }
     },
     {
       "section": {
@@ -154,8 +133,7 @@
         "number": "15",
         "path": "15-luz-gets-forced-into-a-death-battle.html",
         "title": "Luz Gets Forced Into A Death Battle"
-      },
-      "subsections": []
+      }
     },
     {
       "section": {
@@ -164,8 +142,7 @@
         "number": "16",
         "path": "16-luz-nearly-curses-out-a-coven-head.html",
         "title": "Luz Nearly Curses Out A Coven Head"
-      },
-      "subsections": []
+      }
     },
     {
       "section": {
@@ -174,8 +151,7 @@
         "number": "17",
         "path": "17-luz-throws-a-mediocre-three-person-party.html",
         "title": "Luz Throws A Mediocre Three-Person Party"
-      },
-      "subsections": []
+      }
     },
     {
       "section": {
@@ -184,8 +160,7 @@
         "number": "18",
         "path": "18-luz-discovers-a-new-hatred-for-the-moon.html",
         "title": "Luz Discovers A New Hatred For The Moon"
-      },
-      "subsections": []
+      }
     },
     {
       "section": {
@@ -194,8 +169,7 @@
         "number": "19",
         "path": "19-luz-meets-twin-one-and-twin-two.html",
         "title": "Luz Meets Twin One and Twin Two"
-      },
-      "subsections": []
+      }
     },
     {
       "section": {
@@ -204,8 +178,7 @@
         "number": "20",
         "path": "20-luz-embraces-her-inner-horse-girl.html",
         "title": "Luz Embraces Her Inner Horse Girl"
-      },
-      "subsections": []
+      }
     },
     {
       "section": {
@@ -214,8 +187,7 @@
         "number": "21",
         "path": "21-luz-finds-out-she-isnt-alone.html",
         "title": "Luz Finds Out She Isn’t Alone"
-      },
-      "subsections": []
+      }
     },
     {
       "section": {
@@ -224,8 +196,7 @@
         "number": "22",
         "path": "22-luz-journeys-into-bat-country.html",
         "title": "Luz Journeys Into Bat Country"
-      },
-      "subsections": []
+      }
     },
     {
       "section": {
@@ -234,8 +205,7 @@
         "number": "23",
         "path": "23-luz-peels-her-face-open-like-a-banana.html",
         "title": "Luz Peels Her Face Open Like A Banana"
-      },
-      "subsections": []
+      }
     },
     {
       "section": {
@@ -244,8 +214,7 @@
         "number": "24",
         "path": "24-interlude-number-five-gets-a-new-name.html",
         "title": "Interlude: Number Five Gets A New Name"
-      },
-      "subsections": []
+      }
     },
     {
       "section": {
@@ -254,8 +223,7 @@
         "number": "25",
         "path": "25-luz-makes-a-truly-magical-lunch.html",
         "title": "Luz Makes A Truly Magical Lunch"
-      },
-      "subsections": []
+      }
     },
     {
       "section": {
@@ -264,8 +232,7 @@
         "number": "26",
         "path": "26-luz-contemplates-the-possibility-of-having-two-moms.html",
         "title": "Luz Contemplates The Possibility of Having Two Moms"
-      },
-      "subsections": []
+      }
     },
     {
       "section": {
@@ -274,8 +241,7 @@
         "number": "27",
         "path": "27-alex-instantly-blows-her-cover.html",
         "title": "\"Alex\" Instantly Blows Her Cover"
-      },
-      "subsections": []
+      }
     },
     {
       "section": {
@@ -284,8 +250,7 @@
         "number": "28",
         "path": "28-luz-breaks-detention.html",
         "title": "Luz Breaks Detention"
-      },
-      "subsections": []
+      }
     },
     {
       "section": {
@@ -294,8 +259,7 @@
         "number": "29",
         "path": "29-luz-catches-a-thermal.html",
         "title": "Luz Catches A Thermal"
-      },
-      "subsections": []
+      }
     },
     {
       "section": {
@@ -304,8 +268,7 @@
         "number": "30",
         "path": "30-luz-experiences-her-first-grudgby-game.html",
         "title": "Luz Experiences Her First Grudgby Game"
-      },
-      "subsections": []
+      }
     },
     {
       "section": {
@@ -314,8 +277,7 @@
         "number": "31",
         "path": "31-luz-takes-a-leap-of-faith.html",
         "title": "Luz Takes a Leap of Faith"
-      },
-      "subsections": []
+      }
     },
     {
       "section": {
@@ -324,8 +286,7 @@
         "number": "32",
         "path": "32-luz-visits-a-boiling-isles-book-fair.html",
         "title": "Luz Visits a Boiling Isles Book Fair"
-      },
-      "subsections": []
+      }
     },
     {
       "section": {
@@ -334,8 +295,7 @@
         "number": "33",
         "path": "33-luz-starts-her-writing-career.html",
         "title": "Luz Starts Her Writing Career"
-      },
-      "subsections": []
+      }
     },
     {
       "section": {
@@ -344,8 +304,7 @@
         "number": "34",
         "path": "34-luz-embraces-the-elements.html",
         "title": "Luz Embraces the Elements"
-      },
-      "subsections": []
+      }
     },
     {
       "section": {
@@ -354,8 +313,7 @@
         "number": "35",
         "path": "35-luz-experiences-the-epic-highs-and-lows-of-hexside.html",
         "title": "Luz Experiences the Epic Highs and Lows of Hexside"
-      },
-      "subsections": []
+      }
     }
   ]
 }
