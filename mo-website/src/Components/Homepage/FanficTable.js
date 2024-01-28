@@ -17,7 +17,7 @@ const ao3_url = "https://archiveofourown.org/works/";
 
 const FanficTable = () => {
   const fic_list = Object.entries(fic_data)
-  const slash = "/"
+
   return (
     <div>
       <hr />
@@ -28,7 +28,7 @@ const FanficTable = () => {
           <p>Characters: {fic[1].characters}</p>
           <p>Chapter(s): {fic[1].nchapters}/{fic[1].expected_chapters ? fic[1].expected_chapters : "?"}</p>
           <p><a href={ao3_url + fic[1].id}>Read it on AO3</a></p>
-          <p><Link to={slash + urlifyTitle(fic[1].title)}>Read it here</Link></p>
+          <p><Link to={"/" + urlifyTitle(fic[1].title)}>Read it here</Link></p>
           <hr />
         </div>
       )}
