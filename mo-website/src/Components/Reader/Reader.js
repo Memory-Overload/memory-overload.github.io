@@ -39,8 +39,8 @@ let currentFontFamily = fontChoices[0]
 function Reader({ folder }) {
   setStorage("storyPath", folder)
 
-  const [isNotFirstChapter, setPreviousButtonVis] = useState(false);
-  const [isNotLastChapter, setNextButtonVis] = useState(true);
+  const [nextButtonVisible, setPreviousButtonVis] = useState(false);
+  const [previousButtonVisible, setNextButtonVis] = useState(true);
   const [chapterDropdown, setChapterDropdown] = useState(null);
 
   function update_styles(iframe) {
@@ -121,21 +121,28 @@ function Reader({ folder }) {
         reader.style.maxWidth = "100vw";
       }
 
+      // set font radio button
+      const font_choice = document.getElementsByName("fontSelection")
+      font_choice.forEach(choice => { if (choice.id === String(currentFontFamily)) { choice.checked = true } return 1; })
+
       // update iframe src
       const iframe = document.getElementById("reader-iframe")
       iframe.src = "fic_html/" + folder + "/" + chapter_paths_list[0];
       iframe.onload = () => { update_styles(iframe) }
+
+      // create chapter selection dropdown if necessary
       if (chapter_titles_list.length > 1) {
+        setNextButtonVis(true)
         setChapterDropdown(<select onInput={() => (change_chapter(true, -1))} id="chapter-selection">
           {[...Array(chapter_paths_list.length).keys()].map((num) =>
             <option key={num} value={num}>
               {num + 1}. {chapter_titles_list[num]}
             </option>)}
         </select>)
-      }
-      const font_choice = document.getElementsByName("fontSelection")
-      font_choice.forEach(choice => { if (choice.id === String(currentFontFamily)) { choice.checked = true } return 1; })
+      } else { setNextButtonVis(false) }
+      setPreviousButtonVis(false)
     }, 1);
+    // clean up
     return () => clearTimeout(timer);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -170,11 +177,11 @@ function Reader({ folder }) {
       <div id="reader">
         <iframe id="reader-iframe" title="reader-iframe" src="loading.html"></iframe>
       </div>
-      {chapter_titles_list.length > 1 ? <p>
-        {isNotFirstChapter && <button onClick={() => { change_chapter(false, currentChapter - 1) }}>← Previous Chapter</button>}
+      <p>
+        {nextButtonVisible && <button onClick={() => { change_chapter(false, currentChapter - 1) }}>← Previous Chapter</button>}
         &nbsp;
-        {isNotLastChapter && <button onClick={() => { change_chapter(false, currentChapter + 1) }}>Next Chapter →</button>}
-      </p> : <p></p>}
+        {previousButtonVisible && <button onClick={() => { change_chapter(false, currentChapter + 1) }}>Next Chapter →</button>}
+      </p>
     </div>
   )
 }
