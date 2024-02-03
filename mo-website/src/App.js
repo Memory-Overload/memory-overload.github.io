@@ -37,7 +37,6 @@ function Error() {
 }
 
 function FicTemplate({ title, folder }) {
-  window.sessionStorage.setItem("storyPath", folder);
   return (
     <div>
       <h1>{title}</h1>

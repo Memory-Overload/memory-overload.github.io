@@ -29,9 +29,7 @@ const FanficTable = () => {
           <p>Chapter(s): {fic[1].nchapters}/{fic[1].expected_chapters ? fic[1].expected_chapters : "?"}</p>
           <p><a href={ao3_url + fic[1].id}>Read it on AO3</a></p>
           <p>
-            <Link
-              to={"/" + urlifyTitle(fic[1].title)}
-              onClick={() => { window.sessionStorage.setItem("storyPath", urlifyTitle(fic[1].title)) }}>
+            <Link to={"/" + urlifyTitle(fic[1].title)}>
               Read it here
             </Link>
           </p>

@@ -28,7 +28,6 @@ function Reader({ folder }) {
   if (!getStorage("currentChapter")) {
     setStorage("currentChapter", "0")
   }
-  setStorage("storyPath", folder)
 
   const [nextButtonVisible, setPreviousButtonVis] = useState(false);
   const [previousButtonVisible, setNextButtonVis] = useState(true);
@@ -104,6 +103,12 @@ function Reader({ folder }) {
           });
         })
 
+      // go to first chapter if new story picked
+      if (folder !== getStorage("storyPath")) {
+        setStorage("currentChapter", "0")
+        setStorage("storyPath", folder)
+      }
+
       // set wide mode
       const wide_mode_cb = document.getElementById("wide_mode_checkbox")
       wide_mode_cb.checked = getStorage("wideMode") === "true"
@@ -128,17 +133,13 @@ function Reader({ folder }) {
         setChapterDropdown(
           <select
             onInput={() => (change_chapter(true, -1))}
-            id="chapter-selection">
-            {[...Array(chapter_paths_list.length).keys()].map((num) => {
-              if (num === Number(getStorage("currentChapter"))) {
-                return <option key={num} value={num} selected>
-                  {num + 1}. {chapter_titles_list[num]}
-                </option>
-              }
-              return <option key={num} value={num}>
+            id="chapter-selection"
+            defaultValue={Number(getStorage("currentChapter"))}>
+            {[...Array(chapter_paths_list.length).keys()].map((num) =>
+              <option key={num} value={num}>
                 {num + 1}. {chapter_titles_list[num]}
               </option>
-            })}
+            )}
           </select>
         )
       }
