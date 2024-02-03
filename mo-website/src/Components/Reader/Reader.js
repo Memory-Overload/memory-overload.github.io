@@ -125,7 +125,6 @@ function Reader({ folder }) {
       setNextButtonVis(Number(getStorage("currentChapter") - 1 < chapter_titles_list.length))
       setPreviousButtonVis(Number(getStorage("currentChapter")) > 0)
       if (chapter_titles_list.length > 1) {
-        console.log("multiple chapters")
         setChapterDropdown(
           <select
             onInput={() => (change_chapter(true, -1))}
