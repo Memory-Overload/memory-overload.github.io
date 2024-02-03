@@ -9,22 +9,6 @@ const getStorage = (key) => window.sessionStorage.getItem(key);
 
 let chapter_paths_list = [];
 let chapter_titles_list = [];
-
-// const get_json = async () =>
-//   await fetch("fic_html/" + (getStorage("storyPath") ?? 'TheGoodBasiliskLuzura') + "/sitemap.json")
-//     .then(resp => resp.json())
-//     .then(
-//       resp => {
-//         chapter_paths_list = [];
-//         chapter_titles_list = [];
-//         Object.entries(resp)[0][1].map(chap => {
-//           chapter_paths_list.push(chap.section.path);
-//           chapter_titles_list.push(chap.section.title);
-//           return 1;
-//         });
-//       }
-//     );
-
 let currentChapter = 0;
 let currentFontSize = 16; // default font size
 
@@ -34,7 +18,7 @@ const fontChoices = [
   ["Courier New", "Lucida", "monospace"],
   ["Comic Sans", "Comic Sans MS", "Chalkboard", "ChalkboardSE-Regular", "cursive"] // comic sans: microsoft, chalkboard: apple
 ]
-let currentFontFamily = fontChoices[0]
+let currentFontFamily = getStorage("font") ?? fontChoices[0]
 
 function Reader({ folder }) {
   setStorage("storyPath", folder)
@@ -79,6 +63,7 @@ function Reader({ folder }) {
 
   function changeFontFamily(new_font_family) {
     currentFontFamily = new_font_family
+    setStorage("font", currentFontFamily)
     const iframe = document.getElementById("reader-iframe")
     const innerDoc = iframe.contentDocument
     innerDoc.activeElement.style["font-family"] = currentFontFamily
@@ -122,8 +107,8 @@ function Reader({ folder }) {
       }
 
       // set font radio button
-      const font_choice = document.getElementsByName("fontSelection")
-      font_choice.forEach(choice => { if (choice.id === String(currentFontFamily)) { choice.checked = true } return 1; })
+      let font_buttons = document.getElementsByName("fontSelection")
+      font_buttons.forEach(choice => { if (choice.id === getStorage("font")) { choice.checked = true } return 1; })
 
       // update iframe src
       const iframe = document.getElementById("reader-iframe")
