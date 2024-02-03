@@ -9,18 +9,25 @@ const getStorage = (key) => window.sessionStorage.getItem(key);
 
 let chapter_paths_list = [];
 let chapter_titles_list = [];
-let currentChapter = 0;
-let currentFontSize = 16; // default font size
-
-const fontChoices = [
-  ["Times New Roman", "Times", "serif"],
-  ["Verdana", "Arial", "sans-serif"],
-  ["Courier New", "Lucida", "monospace"],
-  ["Comic Sans", "Comic Sans MS", "Chalkboard", "ChalkboardSE-Regular", "cursive"] // comic sans: microsoft, chalkboard: apple
-]
-let currentFontFamily = getStorage("font") ?? fontChoices[0]
 
 function Reader({ folder }) {
+
+  const fontChoices = [
+    ["Times New Roman", "Times", "serif"],
+    ["Verdana", "Arial", "sans-serif"],
+    ["Courier New", "Lucida", "monospace"],
+    ["Comic Sans", "Comic Sans MS", "Chalkboard", "ChalkboardSE-Regular", "cursive"] // comic sans: microsoft, chalkboard: apple
+  ]
+
+  if (!getStorage("font")) {
+    setStorage("font", fontChoices[0])
+  }
+  if (!getStorage("fontSize")) {
+    setStorage("fontSize", "16")
+  }
+  if (!getStorage("currentChapter")) {
+    setStorage("currentChapter", "0")
+  }
   setStorage("storyPath", folder)
 
   const [nextButtonVisible, setPreviousButtonVis] = useState(false);
@@ -32,41 +39,40 @@ function Reader({ folder }) {
 
     // Add a style tag to set the font-size property inside the iframe
     const styleTag = iframeDocument.createElement('style');
-    styleTag.innerHTML = `body { font-size: ${currentFontSize}px; font-family: ${currentFontFamily};}`;
+    styleTag.innerHTML = `body { font-size: ${getStorage("fontSize")}px; font-family: ${getStorage("font")};}`;
     iframeDocument.head.appendChild(styleTag);
   }
 
   function change_chapter(jumping, new_chapter) {
     // update dropdown and currentChapter
     const dropdown = document.getElementById("chapter-selection")
-    currentChapter = jumping ? Number(dropdown.value) : new_chapter
+    setStorage("currentChapter", jumping ? Number(dropdown.value) : new_chapter)
     if (!jumping) { dropdown.value = new_chapter }
 
     // update iframe to selected chapter
     const iframe = document.getElementById("reader-iframe");
-    iframe.src = "fic_html/" + folder + "/" + chapter_paths_list[currentChapter];
+    iframe.src = "fic_html/" + folder + "/" + chapter_paths_list[Number(getStorage("currentChapter"))];
 
     // apply font-size and typeface when iframe loads
     iframe.onload = () => { update_styles(iframe); };
 
     // update button visibility
-    setNextButtonVis(currentChapter < (chapter_paths_list.length - 1));
-    setPreviousButtonVis(currentChapter !== 0);
+    setNextButtonVis(Number(getStorage("currentChapter")) < (chapter_paths_list.length - 1));
+    setPreviousButtonVis(Number(getStorage("currentChapter")) !== 0);
   }
 
   function changeFontSize(change_by) {
-    currentFontSize += change_by
+    setStorage("fontSize", String(Number(getStorage("fontSize")) + change_by))
     const iframe = document.getElementById("reader-iframe")
     const innerDoc = iframe.contentDocument
-    innerDoc.activeElement.style["font-size"] = currentFontSize + "px"
+    innerDoc.activeElement.style["font-size"] = getStorage("fontSize") + "px"
   }
 
   function changeFontFamily(new_font_family) {
-    currentFontFamily = new_font_family
-    setStorage("font", currentFontFamily)
+    setStorage("font", new_font_family)
     const iframe = document.getElementById("reader-iframe")
     const innerDoc = iframe.contentDocument
-    innerDoc.activeElement.style["font-family"] = currentFontFamily
+    innerDoc.activeElement.style["font-family"] = new_font_family
   }
 
   function toggleWideMode() {
@@ -112,23 +118,36 @@ function Reader({ folder }) {
 
       // update iframe src
       const iframe = document.getElementById("reader-iframe")
-      iframe.src = "fic_html/" + folder + "/" + chapter_paths_list[0];
+      iframe.src = "fic_html/" + folder + "/" + chapter_paths_list[Number(getStorage("currentChapter"))];
       iframe.onload = () => { update_styles(iframe) }
 
       // create chapter selection dropdown if necessary
+      setNextButtonVis(Number(getStorage("currentChapter") - 1 < chapter_titles_list.length))
+      setPreviousButtonVis(Number(getStorage("currentChapter")) > 0)
       if (chapter_titles_list.length > 1) {
-        setNextButtonVis(true)
-        setChapterDropdown(<select onInput={() => (change_chapter(true, -1))} id="chapter-selection">
-          {[...Array(chapter_paths_list.length).keys()].map((num) =>
-            <option key={num} value={num}>
-              {num + 1}. {chapter_titles_list[num]}
-            </option>)}
-        </select>)
-      } else { setNextButtonVis(false) }
-      setPreviousButtonVis(false)
+        console.log("multiple chapters")
+        setChapterDropdown(
+          <select
+            onInput={() => (change_chapter(true, -1))}
+            id="chapter-selection">
+            {[...Array(chapter_paths_list.length).keys()].map((num) => {
+              if (num === Number(getStorage("currentChapter"))) {
+                return <option key={num} value={num} selected>
+                  {num + 1}. {chapter_titles_list[num]}
+                </option>
+              }
+              return <option key={num} value={num}>
+                {num + 1}. {chapter_titles_list[num]}
+              </option>
+            })}
+          </select>
+        )
+      }
     }, 1);
     // clean up
-    return () => clearTimeout(timer);
+    return () => {
+      clearTimeout(timer)
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -154,18 +173,18 @@ function Reader({ folder }) {
 
       <input id="wide_mode_checkbox" name="wide_mode_checkbox" type="checkbox" onClick={toggleWideMode} />
       <label htmlFor="wide_mode_checkbox">Wide Mode</label>
-      {chapterDropdown ?
-        <p>
+      {chapterDropdown &&
+        <div>
           Jump to Chapter...<br />
           {chapterDropdown}
-        </p> : <></>}
+        </div>}
       <div id="reader">
         <iframe id="reader-iframe" title="reader-iframe" src="loading.html"></iframe>
       </div>
       <p>
-        {nextButtonVisible && <button onClick={() => { change_chapter(false, currentChapter - 1) }}>← Previous Chapter</button>}
+        {nextButtonVisible && <button onClick={() => { change_chapter(false, Number(getStorage("currentChapter")) - 1) }}>← Previous Chapter</button>}
         &nbsp;
-        {previousButtonVisible && <button onClick={() => { change_chapter(false, currentChapter + 1) }}>Next Chapter →</button>}
+        {previousButtonVisible && <button onClick={() => { change_chapter(false, Number(getStorage("currentChapter")) + 1) }}>Next Chapter →</button>}
       </p>
     </div>
   )
