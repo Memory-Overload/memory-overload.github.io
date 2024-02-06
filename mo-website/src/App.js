@@ -47,7 +47,6 @@ function FicTemplate({ title, folder }) {
 }
 
 
-setTimeout(() => Routes)
 function App() {
   return (
     <div className="App">
