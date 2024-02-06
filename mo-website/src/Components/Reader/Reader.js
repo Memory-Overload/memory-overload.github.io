@@ -28,6 +28,9 @@ function Reader({ folder }) {
   if (!getStorage("currentChapter")) {
     setStorage("currentChapter", "0")
   }
+  if (!getStorage("storyPath")) {
+    setStorage("storyPath", folder)
+  }
 
   const [nextButtonVisible, setPreviousButtonVis] = useState(false);
   const [previousButtonVisible, setNextButtonVis] = useState(true);
@@ -129,6 +132,7 @@ function Reader({ folder }) {
       // create chapter selection dropdown if necessary
       setNextButtonVis(Number(getStorage("currentChapter") - 1 < chapter_titles_list.length))
       setPreviousButtonVis(Number(getStorage("currentChapter")) > 0)
+
       if (chapter_titles_list.length > 1) {
         setChapterDropdown(
           <select
